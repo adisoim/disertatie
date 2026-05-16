@@ -49,7 +49,6 @@ async def create_experiment(
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
 ):
-    # Validare: oracle disponibil pentru DBMS
     available = SQLANCER_ORACLES.get(config.dbms, {})
     if config.oracle not in available:
         return {

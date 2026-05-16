@@ -20,7 +20,6 @@ DBMS_NAME_MAPPING = {
 }
 
 def normalize_dbms_name(raw_name: str) -> str:
-    """Transformă orice variantă de nume în formatul oficial (ex: postgres -> PostgreSQL)"""
     if not raw_name:
         return "Unknown"
     return DBMS_NAME_MAPPING.get(raw_name.lower(), raw_name)
@@ -28,7 +27,6 @@ def normalize_dbms_name(raw_name: str) -> str:
 
 @router.get("/static")
 async def get_static_results(db: AsyncSession = Depends(get_db)):
-    """Returnează TOATE rezultatele combinate (Excel + Live UI)"""
     res_static = await db.execute(select(StaticResult))
     rows_static = res_static.scalars().all()
     
@@ -72,7 +70,6 @@ async def get_static_results(db: AsyncSession = Depends(get_db)):
 
 @router.get("/summary")
 async def get_summary(db: AsyncSession = Depends(get_db)):
-    """Returnează sumarul agregat din ambele surse"""
     res_static = await db.execute(select(StaticResult))
     rows_static = res_static.scalars().all()
 
@@ -162,7 +159,7 @@ async def get_bugs_only(db: AsyncSession = Depends(get_db)):
     for r in rows_static:
         bugs_list.append({
             "experiment": r.experiment,
-            "dbms": normalize_dbms_name(r.dbms), # Normalizare
+            "dbms": normalize_dbms_name(r.dbms),
             "oracle": r.oracle,
             "bugs_found": r.bugs_found,
             "bug_type": r.bug_type,
@@ -172,7 +169,7 @@ async def get_bugs_only(db: AsyncSession = Depends(get_db)):
     for r in rows_dynamic:
         bugs_list.append({
             "experiment": "Live UI Run",
-            "dbms": normalize_dbms_name(r.dbms), # Normalizare
+            "dbms": normalize_dbms_name(r.dbms),
             "oracle": r.oracle,
             "bugs_found": r.bugs_found,
             "bug_type": r.bug_type or "Logic Bug",

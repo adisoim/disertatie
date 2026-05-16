@@ -45,10 +45,8 @@ function normalizeDbms(name: string) {
 function normalizeOracle(name: string) {
   if (!name) return "Unknown";
   
-  // Transformă totul în uppercase și scoate underscore-urile
   let clean = name.replace(/_/g, " ").toUpperCase().trim();
   
-  // Forțăm toate variantele scurte la varianta completă TLP
   if (clean === "WHERE") return "TLP WHERE";
   if (clean === "HAVING") return "TLP HAVING";
   if (clean === "GROUP BY") return "TLP GROUP BY";
@@ -75,7 +73,6 @@ export default function DashboardPage() {
 
   if (isLoading) return <DashboardSkeleton />;
 
-  // 1. Bug-uri per DBMS (Grupare strictă)
   const bugsMap: Record<string, number> = {};
   summary?.forEach((s: any) => {
     const dbms = normalizeDbms(s.dbms);
@@ -87,14 +84,12 @@ export default function DashboardPage() {
     bugs: bugsMap[key],
   }));
 
-  // 2. Throughput - Fără duplicate
   const throughputMap: Record<string, number> = {};
   results?.forEach((r: any) => {
     const dbms = normalizeDbms(r.dbms);
     const oracle = normalizeOracle(r.oracle);
-    const key = `${dbms} ${oracle}`; // Ex: "SQLite TLP WHERE"
+    const key = `${dbms} ${oracle}`;
     
-    // Păstrăm throughput-ul maxim găsit
     if (!throughputMap[key] || (r.throughput_qps && r.throughput_qps > throughputMap[key])) {
       throughputMap[key] = r.throughput_qps || 0;
     }
@@ -112,7 +107,6 @@ export default function DashboardPage() {
   const totalBugs = results?.reduce((sum: number, r: any) => sum + (r.bugs_found || 0), 0);
   const totalQueries = results?.reduce((sum: number, r: any) => sum + (r.total_queries || 0), 0);
 
-  // 3. Bug-uri per Experiment (Doar cele cu erori)
   const bugsByExpMap = results?.reduce((acc: any, r: any) => {
     const expName = r.experiment ? r.experiment.trim() : "Unknown";
     if (r.bugs_found > 0) {
