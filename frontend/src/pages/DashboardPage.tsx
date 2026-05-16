@@ -53,7 +53,6 @@ function normalizeOracle(name: string) {
   if (clean === "AGGREGATE") return "TLP AGGREGATE";
   if (clean === "DISTINCT") return "TLP DISTINCT";
   
-  // Restul corecțiilor
   if (clean === "NOREC") return "NoREC";
   if (clean.includes("QUERY PART")) return "QUERY PART.";
   
