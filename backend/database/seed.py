@@ -14,7 +14,7 @@ SEED_DATA = [
         "success_rate": 0.98,
         "bugs_found": 1,
         "bug_type": "Logic Bug",
-        "observations": "BETWEEN+QUOTE() pe view: 1 vs 0 rânduri.",
+        "observations": "BETWEEN+QUOTE()/view: 1 vs 0 rows.",
     },
     {
         "experiment": "Exp 1",
@@ -26,7 +26,7 @@ SEED_DATA = [
         "success_rate": 0.98,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri. Throughput stabil.",
+        "observations": "0 bugs. Stable throughput.",
     },
     {
         "experiment": "Exp 1",
@@ -38,7 +38,7 @@ SEED_DATA = [
         "success_rate": 0.55,
         "bugs_found": 1,
         "bug_type": "Logic Bug",
-        "observations": "MAX(CHAR) cu UTF-16 + FTS5: rezultat incorect.",
+        "observations": "MAX(CHAR) with UTF-16 + FTS5: incorrect result.",
     },
     {
         "experiment": "Exp 1",
@@ -50,7 +50,7 @@ SEED_DATA = [
         "success_rate": 0.96,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri. Cel mai mare throughput SQLite.",
+        "observations": "0 bugs. Highest throughput in SQLite.",
     },
     {
         "experiment": "Exp 1",
@@ -62,7 +62,7 @@ SEED_DATA = [
         "success_rate": 0.99,
         "bugs_found": 2,
         "bug_type": "Logic Bug",
-        "observations": "2 bug-uri: predicat boolean concatenare + IF(NULL).",
+        "observations": "2 bugs: boolean predicate concatenation + IF(NULL).",
     },
     {
         "experiment": "Exp 1",
@@ -74,7 +74,7 @@ SEED_DATA = [
         "success_rate": 0.99,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri cu PQS.",
+        "observations": "0 bugs with PQS.",
     },
     {
         "experiment": "Exp 1",
@@ -86,7 +86,7 @@ SEED_DATA = [
         "success_rate": 0.45,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri. Success rate scăzut (45%).",
+        "observations": "0 bugs. Low success rate (45%).",
     },
     {
         "experiment": "Exp 1",
@@ -98,7 +98,7 @@ SEED_DATA = [
         "success_rate": 0.33,
         "bugs_found": 0,
         "bug_type": "Eroare Instrumentare",
-        "observations": "NullPointerException SQLancer. Incompatibil cu PG 15.x.",
+        "observations": "NullPointerException SQLancer. Incompatible with PG 15.x.",
     },
     {
         "experiment": "Exp 1",
@@ -110,7 +110,7 @@ SEED_DATA = [
         "success_rate": 0.59,
         "bugs_found": 0,
         "bug_type": "Eroare Instrumentare",
-        "observations": "25 threaduri oprite. Rezultate invalide.",
+        "observations": "25 stopped threads. Invalid results.",
     },
     {
         "experiment": "Exp 1",
@@ -121,8 +121,8 @@ SEED_DATA = [
         "throughput_qps": 0,
         "success_rate": 0,
         "bugs_found": 0,
-        "bug_type": "Eroare Instrumentare",
-        "observations": "Setting eliminat în v13. Incompatibil cu SQLancer 2.0.0.",
+        "bug_type": "Instrumentation Not Supported",
+        "observations": "Setting eliminated in v13. Incompatible with SQLancer 2.0.0.",
     },
     {
         "experiment": "Exp 2",
@@ -134,7 +134,7 @@ SEED_DATA = [
         "success_rate": 0.53,
         "bugs_found": 13,
         "bug_type": "Logic Bug (HAVING)",
-        "observations": "13 bug-uri: content mismatch (x9) + size mismatch (x4). NATURAL RIGHT JOIN + GROUP BY + HAVING.",
+        "observations": "13 bugs: content mismatch (x9) + size mismatch (x4). NATURAL RIGHT JOIN + GROUP BY + HAVING.",
     },
     {
         "experiment": "Exp 2",
@@ -146,7 +146,7 @@ SEED_DATA = [
         "success_rate": 0.83,
         "bugs_found": 2,
         "bug_type": "Logic Bug (HAVING)",
-        "observations": "2 bug-uri: AGG_TO_COP hint + GROUP BY + HAVING.",
+        "observations": "2 bugs: AGG_TO_COP hint + GROUP BY + HAVING.",
     },
     {
         "experiment": "Exp 2",
@@ -158,7 +158,7 @@ SEED_DATA = [
         "success_rate": 0.99,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri noi. Bug-urile din 2020 fixate.",
+        "observations": "0 new bugs. Bugs from 2020 fixed.",
     },
     {
         "experiment": "Exp 2",
@@ -170,7 +170,7 @@ SEED_DATA = [
         "success_rate": 0.43,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri. Success rate scăzut.",
+        "observations": "0 bugs. Low success rate.",
     },
     {
         "experiment": "Exp 2",
@@ -182,7 +182,7 @@ SEED_DATA = [
         "success_rate": 0.70,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri. Throughput foarte scăzut.",
+        "observations": "0 bugs. Very low throughput.",
     },
     {
         "experiment": "Exp 2",
@@ -194,7 +194,7 @@ SEED_DATA = [
         "success_rate": 0.72,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri.",
+        "observations": "0 bugs.",
     },
     {
         "experiment": "Exp 2",
@@ -206,7 +206,7 @@ SEED_DATA = [
         "success_rate": 0.71,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri.",
+        "observations": "0 bugs.",
     },
     {
         "experiment": "Exp 2",
@@ -218,7 +218,7 @@ SEED_DATA = [
         "success_rate": 0.99,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "0 bug-uri. DuckDB matur în 2026.",
+        "observations": "0 bugs. DuckDB mature in 2026.",
     },
     {
         "experiment": "Exp 3",
@@ -242,7 +242,7 @@ SEED_DATA = [
         "success_rate": 0.95,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "DBMS nou față de paper. 0 bug-uri. Throughput ridicat.",
+        "observations": "DBMS new to paper. 0 bugs. High throughput.",
     },
     {
         "experiment": "Exp 3",
@@ -254,7 +254,7 @@ SEED_DATA = [
         "success_rate": 0.99,
         "bugs_found": 0,
         "bug_type": None,
-        "observations": "DQP: throughput foarte mic (~116 q/s). 0 bug-uri.",
+        "observations": "DQP: throughput very low (~116 q/s). 0 bugs.",
     },
 ]
 
