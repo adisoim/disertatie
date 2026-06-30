@@ -39,7 +39,7 @@ async def get_static_results(db: AsyncSession = Depends(get_db)):
         combined_results.append({
             "id": r.id,
             "experiment": r.experiment,
-            "dbms": normalize_dbms_name(r.dbms), # Normalizare
+            "dbms": normalize_dbms_name(r.dbms),
             "version": r.version,
             "oracle": r.oracle,
             "total_queries": r.total_queries,
@@ -54,7 +54,7 @@ async def get_static_results(db: AsyncSession = Depends(get_db)):
         combined_results.append({
             "id": r.id,
             "experiment": "Live UI Run",
-            "dbms": normalize_dbms_name(r.dbms), # Normalizare
+            "dbms": normalize_dbms_name(r.dbms),
             "version": "Docker",
             "oracle": r.oracle,
             "total_queries": r.total_queries_executed or 0,
@@ -62,7 +62,7 @@ async def get_static_results(db: AsyncSession = Depends(get_db)):
             "success_rate": r.success_rate or 0.0,
             "bugs_found": r.bugs_found or 0,
             "bug_type": r.bug_type or ("" if r.bugs_found == 0 else "Logic Bug"),
-            "observations": r.error_message or "Experiment rulat din interfața web.",
+            "observations": r.error_message or "Experiment run from web interface.",
         })
 
     return combined_results
@@ -79,7 +79,7 @@ async def get_summary(db: AsyncSession = Depends(get_db)):
     summary = {}
 
     def add_to_summary(raw_dbms, bugs, queries, oracle, exp_name):
-        dbms = normalize_dbms_name(raw_dbms) # Aplicăm normalizarea înainte de a grupa!
+        dbms = normalize_dbms_name(raw_dbms)
         if dbms not in summary:
             summary[dbms] = {
                 "dbms": dbms,
@@ -113,7 +113,7 @@ async def get_by_experiment(exp_name: str, db: AsyncSession = Depends(get_db)):
             {
                 "id": r.id,
                 "experiment": "Live UI Run",
-                "dbms": normalize_dbms_name(r.dbms), # Normalizare
+                "dbms": normalize_dbms_name(r.dbms),
                 "version": "Docker",
                 "oracle": r.oracle,
                 "total_queries": r.total_queries_executed or 0,
@@ -132,7 +132,7 @@ async def get_by_experiment(exp_name: str, db: AsyncSession = Depends(get_db)):
             {
                 "id": r.id,
                 "experiment": r.experiment,
-                "dbms": normalize_dbms_name(r.dbms), # Normalizare
+                "dbms": normalize_dbms_name(r.dbms),
                 "version": r.version,
                 "oracle": r.oracle,
                 "total_queries": r.total_queries,

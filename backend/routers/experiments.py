@@ -211,7 +211,7 @@ async def run_sqlancer(exp_id: str, config: ExperimentConfig):
                 
                 if platform.system() == "Windows":
                     subprocess.run(
-                        ["taskkill", "/F", "/T", "/PID", str(process.pid)], 
+                        ["taskkill", "/F", "/T", "/PID", str(process.pid)],
                         stdout=subprocess.DEVNULL, 
                         stderr=subprocess.DEVNULL
                     )

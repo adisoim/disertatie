@@ -145,7 +145,6 @@ export default function DashboardPage() {
         <div className="xl:col-span-2 bg-[#1e293b] rounded-lg p-6 border border-gray-700/50 shadow-md">
           <h2 className="text-lg font-bold text-white mb-6">Bug Distribution per DBMS</h2>
           <ResponsiveContainer width="100%" height={380}>
-            {/* margin bottom 100 previne taierea numelor lungi gen CockroachDB */}
             <BarChart data={bugsPerDbms} margin={{ top: 10, right: 10, left: -20, bottom: 100 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
               <XAxis 
